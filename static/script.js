@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         backBtn.onclick = () => {
             document.querySelector('.list-container').classList.remove('hidden-mobile');
             detailPanel.classList.remove('visible-mobile');
+            detailPanel.classList.add('hidden');
         };
     }
 
