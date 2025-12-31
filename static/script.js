@@ -16,12 +16,19 @@ const loadingIndicator = document.getElementById('loadingFunds');
 // Init
 document.addEventListener('DOMContentLoaded', async () => {
     loadingIndicator.classList.remove('hidden');
+
+    // Mobile Back Button Logic
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+        backBtn.onclick = () => {
+            document.querySelector('.list-container').classList.remove('hidden-mobile');
+            detailPanel.classList.remove('visible-mobile');
+        };
+    }
+
     try {
         const res = await fetch(`${API_BASE}/funds`);
         funds = await res.json();
-        // renderList(funds); // Ensure list is hidden initially
-        funds = await res.json();
-        // renderList(funds); // Ensure list is hidden initially
     } catch (e) {
         console.error("Failed to load funds", e);
         loadingIndicator.innerText = "Errore nel caricamento dei fondi. Ricarica la pagina.";
@@ -86,6 +93,10 @@ async function selectFund(fund, el) {
     // Highlight
     document.querySelectorAll('.fund-item').forEach(i => i.classList.remove('active'));
     el.classList.add('active');
+
+    // Mobile specific: hide list and show details
+    document.querySelector('.list-container').classList.add('hidden-mobile');
+    detailPanel.classList.add('visible-mobile');
 
     // Show Details
     detailPanel.classList.remove('hidden');
