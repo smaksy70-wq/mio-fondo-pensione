@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+requests
+beautifulsoup4
+pdfplumber
+jinja2
+python-multipart
+pandas
+openpyxl
+a2wsgi
