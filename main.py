@@ -35,10 +35,10 @@ def analyze_fund(url: str = Query(...), type: str = Query("FPN")):
         return data
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
-# Importante: questo deve stare per ultimo
 if os.path.exists("static"):
     app.mount("/", StaticFiles(directory="static", html=True), name="static")
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
 ```
+
 
